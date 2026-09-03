@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Arena Sicredi — Barra do Garças</title>
+<meta name="description" content="Arena Sicredi em Barra do Garças, MT. Beach tennis, vôlei de praia e bar à beira da quadra.">
+<meta name="theme-color" content="#F4F2EC">
+<link rel="canonical" href="https://arenasicredi.com.br/">
+<meta property="og:title" content="Arena Sicredi — Barra do Garças">
+<meta property="og:description" content="Beach tennis, vôlei de praia e bar à beira da quadra, em Barra do Garças, MT.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:image" content="https://filmaeu.sfo2.digitaloceanspaces.com/website-images/790/68a63462155af.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+:root{
+  --off:#F4F2EC;
+  --off-2:#EAE6DB;
+  --ink:#151815;
+  --ink-2:rgba(21,24,21,.66);
+  --ink-3:rgba(21,24,21,.42);
+  --line:rgba(21,24,21,.12);
+  --green-deep:#12382D;
+  --green-mid:#1E5542;
+  --green-bright:#4FA82A;
+  --paper:#F4F2EC;
+  --disp:'Space Grotesk',system-ui,sans-serif;
+  --text:'Montserrat',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--off);color:var(--ink);font-family:var(--text);
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%;width:100%;height:auto;object-fit:cover}
+::selection{background:var(--green-deep);color:var(--off)}
+:focus-visible{outline:2px solid var(--green-deep);outline-offset:3px}
+.wrap{width:100%;max-width:1360px;margin:0 auto;padding:0 clamp(20px,5vw,64px)}
+
+/* tratamento fotográfico: duotone leve pra unificar fotos de fontes/luz diferentes */
+.photo{position:relative;overflow:hidden;background:var(--green-deep)}
+.photo img{filter:saturate(.9) contrast(1.04)}
+.photo::after{content:'';position:absolute;inset:0;mix-blend-mode:multiply;
+  background:linear-gradient(160deg,rgba(18,56,45,.28),rgba(21,24,21,.12))}
+
+/* NAV */
+header{position:fixed;top:0;left:0;right:0;z-index:60;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px clamp(20px,5vw,64px);color:#fff;transition:color .35s ease}
+header.on-light{color:var(--ink)}
+.logo{font-family:var(--disp);font-weight:600;font-size:19px;letter-spacing:-.01em}
+.nav-cta{font-family:var(--text);font-size:12.5px;font-weight:600;letter-spacing:.02em;
+  border:1px solid currentColor;border-radius:999px;padding:10px 20px;
+  transition:background .3s,color .3s}
+.nav-cta:hover{background:var(--ink);color:var(--off);border-color:var(--ink)}
+
+/* HERO — foto real protagonista */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;
+  justify-content:flex-end;color:#fff}
+@supports not (min-height:100svh){.hero{min-height:100vh}}
+.hero .photo{position:absolute;inset:0;z-index:0}
+.hero .photo img{height:100%;object-position:center 40%}
+.hero .photo::after{background:linear-gradient(180deg,rgba(18,30,24,.15) 0%,rgba(15,20,17,.1) 35%,rgba(12,16,14,.92) 100%)}
+.hero-in{position:relative;z-index:2;padding:110px clamp(20px,5vw,64px) clamp(44px,8vw,76px)}
+.eyebrow{font-family:var(--text);font-size:12.5px;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;color:rgba(255,255,255,.72);display:flex;align-items:center;gap:9px}
+.eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--green-bright)}
+h1.h-hero{font-family:var(--disp);font-weight:600;font-size:clamp(46px,11.5vw,108px);
+  line-height:.98;letter-spacing:-.02em;margin-top:16px}
+h1.h-hero .ln{overflow:hidden}
+h1.h-hero .ln span{display:block;transform:translateY(100%)}
+.grad{background:linear-gradient(100deg,#EFF3D8 0%,var(--green-bright) 55%,#DDEAC4 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{font-size:clamp(15px,3.6vw,18px);color:rgba(255,255,255,.78);max-width:38ch;
+  margin-top:20px;line-height:1.55}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--text);font-size:14.5px;
+  font-weight:600;padding:15px 24px;border-radius:999px;transition:transform .3s cubic-bezier(.16,1,.3,1),background .3s,color .3s}
+.btn.pri{background:var(--off);color:var(--ink)}
+.btn.pri:hover{transform:translateY(-2px);background:#fff}
+.btn.sec{border:1px solid rgba(255,255,255,.5);color:#fff}
+.btn.sec:hover{border-color:#fff;transform:translateY(-2px)}
+.btn svg{width:15px;height:15px}
+.btn.dark{background:var(--ink);color:var(--off)}
+.btn.dark:hover{background:var(--green-deep)}
+.btn.outline-dark{border:1px solid var(--line);color:var(--ink)}
+.btn.outline-dark:hover{border-color:var(--ink);transform:translateY(-2px)}
+
+/* IDENTIDADE */
+.id{padding:clamp(80px,14vw,140px) 0}
+.id-grid{display:grid;gap:28px}
+@media(min-width:900px){.id-grid{grid-template-columns:1.1fr .9fr;gap:64px;align-items:end}}
+.h2{font-family:var(--disp);font-weight:600;font-size:clamp(34px,8.4vw,62px);
+  line-height:1.02;letter-spacing:-.02em;max-width:15ch}
+.body p{font-size:clamp(15px,3.6vw,17px);line-height:1.72;color:var(--ink-2);max-width:48ch}
+.body p+p{margin-top:14px}
+
+/* MODALIDADES — lista editorial */
+.mod{border-top:1px solid var(--line)}
+.mod-row{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:22px;
+  padding:clamp(26px,4.6vw,38px) 0;border-bottom:1px solid var(--line)}
+.mod-row .idx{font-family:var(--disp);font-size:14px;color:var(--green-deep);font-weight:600}
+.mod-row .name{font-family:var(--disp);font-weight:600;font-size:clamp(24px,6vw,42px);letter-spacing:-.015em;line-height:1}
+.mod-row .desc{font-size:13.5px;color:var(--ink-3);margin-top:6px;display:block;max-width:38ch}
+.mod-row .go{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);
+  display:grid;place-items:center;flex:none;transition:transform .35s cubic-bezier(.16,1,.3,1),background .3s,border-color .3s,color .3s}
+.mod-row .go svg{width:14px;height:14px}
+@media(hover:hover){.mod-row:hover .go{transform:translate(4px,-4px);background:var(--green-deep);border-color:var(--green-deep);color:#fff}}
+
+/* ESTRUTURA — fotos reais em composição editorial assimétrica */
+.struct{padding:clamp(72px,12vw,120px) 0;background:var(--green-deep);color:#fff}
+.struct .h2{color:#fff;max-width:none}
+.struct-lbl{font-family:var(--text);font-size:12px;font-weight:600;letter-spacing:.12em;
+  text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:16px}
+.sgrid{display:grid;gap:14px;margin-top:44px}
+@media(min-width:860px){
+  .sgrid{grid-template-columns:1.3fr .7fr;grid-template-rows:auto auto;gap:14px}
+  .sgrid .s1{grid-row:1/3}
+}
+.sfig{position:relative;border-radius:2px}
+.sfig .photo{aspect-ratio:4/5}
+.sgrid .s1 .photo{aspect-ratio:3/4}
+.sfig .cap{margin-top:12px;display:flex;justify-content:space-between;align-items:baseline;
+  font-family:var(--text);font-size:12.5px;color:rgba(255,255,255,.6)}
+.sfig .cap b{color:#fff;font-weight:600}
+
+/* AMENIDADES */
+.amen{padding:clamp(64px,10vw,100px) 0;border-top:1px solid rgba(255,255,255,.14)}
+.amen-list{display:flex;flex-wrap:wrap;gap:10px 14px;margin-top:26px}
+.amen-list span{font-family:var(--text);font-size:13px;color:rgba(255,255,255,.85);
+  border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:9px 16px}
+
+/* HORÁRIOS */
+.hours{padding:clamp(72px,12vw,120px) 0;border-top:1px solid var(--line)}
+.hgrid{margin-top:36px;border-top:1px solid var(--line)}
+.hrow2{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--line);
+  font-size:14.5px}
+.hrow2 .d{color:var(--ink-2)}
+.hrow2 .t{font-weight:600;font-variant-numeric:tabular-nums}
+
+/* DAY USE */
+.dayuse{padding:clamp(64px,11vw,110px) 0;border-top:1px solid var(--line)}
+.du-inner{display:flex;flex-wrap:wrap;align-items:flex-end;gap:28px;justify-content:space-between}
+.du-tag{display:inline-flex;align-items:baseline;gap:8px;background:var(--green-deep);color:#fff;
+  border-radius:10px;padding:16px 24px}
+.du-tag b{font-family:var(--disp);font-weight:700;font-size:32px;line-height:1}
+.du-tag span{font-size:12.5px;font-weight:600}
+.du-note{font-size:13.5px;color:var(--ink-3);margin-top:12px;max-width:40ch}
+
+/* LOCALIZAÇÃO */
+.loc{padding:clamp(72px,12vw,120px) 0;border-top:1px solid var(--line)}
+.loc-grid{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:26px}
+.loc address{font-style:normal;font-size:15px;color:var(--ink-2);line-height:1.7;margin-top:14px}
+
+/* CTA FINAL */
+.final{padding:clamp(90px,15vw,150px) 0;background:var(--ink);color:var(--off)}
+.final .h2{color:var(--off);max-width:none;font-size:clamp(44px,11.5vw,96px)}
+.final p{color:rgba(244,242,236,.7);font-size:clamp(15px,3.6vw,18px);max-width:44ch;margin-top:16px}
+
+/* FOOTER */
+footer{background:var(--ink);color:var(--off);padding:clamp(36px,6vw,52px) 0 26px;
+  border-top:1px solid rgba(244,242,236,.14)}
+.f-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:26px}
+.f-col{display:flex;flex-direction:column;gap:9px;font-size:13.5px;color:rgba(244,242,236,.68)}
+.f-col .h{font-size:11px;letter-spacing:.1em;color:rgba(244,242,236,.42);margin-bottom:3px}
+.f-col a{transition:color .3s}
+.f-col a:hover{color:var(--green-bright)}
+.f-bottom{margin-top:36px;padding-top:18px;border-top:1px solid rgba(244,242,236,.14);
+  display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-size:11.5px;color:rgba(244,242,236,.42)}
+
+.reveal{opacity:0;transform:translateY(18px)}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none}
+  h1.h-hero .ln span{transform:none}
+}
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <a href="#top" class="logo">ARENA SICREDI</a>
+  <a href="#reserva" class="nav-cta">Reservar</a>
+</header>
+
+<section class="hero" id="top">
+  <div class="photo" aria-hidden="true">
+    <img src="https://filmaeu.sfo2.digitaloceanspaces.com/website-images/790/68a63462155af.jpg" alt="" loading="eager" fetchpriority="high">
+  </div>
+  <div class="hero-in">
+    <div class="eyebrow"><span class="dot"></span>Barra do Garças — MT</div>
+    <h1 class="h-hero">
+      <span class="ln"><span>Pé na areia,</span></span>
+      <span class="ln"><span class="grad">jogo na mão.</span></span>
+    </h1>
+    <p class="hero-sub">Beach tennis, vôlei de praia e bar à beira da quadra — todos os dias da semana.</p>
+    <div class="hero-ctas">
+      <a href="#reserva" class="btn pri">Reserve sua quadra
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="13 5 20 12 13 19"/></svg></a>
+      <a href="#loc" class="btn sec">Como chegar ↓</a>
+    </div>
+  </div>
+</section>
+
+<section class="id">
+  <div class="wrap id-grid">
+    <h2 class="h2 reveal">Mais que quadra.<br>Um lugar pra jogar.</h2>
+    <div class="body reveal">
+      <p>A Arena Sicredi é onde o treino vira jogo e o jogo vira encontro. Quadra de areia, luz pra virada de noite e bar pra ficar depois que o placar fecha.</p>
+      <p>Beach tennis e vôlei de praia — no mesmo endereço, na mesma comunidade.</p>
+    </div>
+  </div>
+</section>
+
+<section class="mod">
+  <div class="wrap">
+    <div class="mod-row reveal">
+      <span class="idx">01</span>
+      <span><span class="name">Beach Tennis</span>
+        <span class="desc">Treino, jogo livre e evolução na areia.</span></span>
+      <a href="#reserva" class="go" aria-label="Reservar beach tennis">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="13 5 20 12 13 19"/></svg></a>
+    </div>
+    <div class="mod-row reveal">
+      <span class="idx">02</span>
+      <span><span class="name">Vôlei de Praia</span>
+        <span class="desc">Quadra oficial de areia para vôlei em dupla ou quarteto.</span></span>
+      <a href="#reserva" class="go" aria-label="Reservar vôlei de praia">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="13 5 20 12 13 19"/></svg></a>
+    </div>
+    <div class="mod-row reveal">
+      <span class="idx">03</span>
+      <span><span class="name">Bar &amp; Convivência</span>
+        <span class="desc">Bar e lanchonete pra ficar antes e depois do jogo.</span></span>
+      <a href="#loc" class="go" aria-label="Saiba mais">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="13 5 20 12 13 19"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<section class="struct">
+  <div class="wrap">
+    <div class="struct-lbl reveal">A estrutura</div>
+    <h2 class="h2 reveal">Feita pra jogar<br>de dia e de noite.</h2>
+    <div class="sgrid">
+      <figure class="sfig s1 reveal">
+        <div class="photo"><img src="https://filmaeu.sfo2.digitaloceanspaces.com/website-images/790/68a634629594d.jpg" alt="Quadra de areia da Arena Sicredi" loading="lazy"></div>
+        <figcaption class="cap"><b>Quadra</b><span>Areia própria</span></figcaption>
+      </figure>
+      <figure class="sfig reveal">
+        <div class="photo"><img src="https://filmaeu.sfo2.digitaloceanspaces.com/website-images/790/68a6346326446.jpg" alt="Iluminação noturna da Arena Sicredi" loading="lazy"></div>
+        <figcaption class="cap"><b>Iluminação</b><span>Jogo à noite</span></figcaption>
+      </figure>
+      <figure class="sfig reveal">
+        <div class="photo"><img src="https://filmaeu.sfo2.digitaloceanspaces.com/website-images/790/68a63463b06fe.jpg" alt="Bar e lanchonete da Arena Sicredi" loading="lazy"></div>
+        <figcaption class="cap"><b>Bar</b><span>Antes e depois</span></figcaption>
+      </figure>
+    </div>
+
+    <div class="amen">
+      <div class="struct-lbl reveal">Comodidades</div>
+      <div class="amen-list reveal">
+        <span>Iluminação noturna</span>
+        <span>Bar / Lanchonete</span>
+        <span>Sistema de som</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hours">
+  <div class="wrap">
+    <h2 class="h2 reveal">Quando jogar.</h2>
+    <div class="hgrid reveal">
+      <div class="hrow2"><span class="d">Segunda a sexta</span><span class="t">07h–11h · 15h–23h</span></div>
+      <div class="hrow2"><span class="d">Sábado</span><span class="t">07h–12h · 16h–22h</span></div>
+      <div class="hrow2"><span class="d">Domingo</span><span class="t">17h–21h</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="dayuse" id="dayuse">
+  <div class="wrap du-inner">
+    <div class="reveal">
+      <h2 class="h2">Day Use.<br>Fim de semana<br>é diferente.</h2>
+    </div>
+    <div class="reveal">
+      <div class="du-tag"><b>R$20</b><span>Sábado e domingo</span></div>
+      <div class="du-note">Acesso Day Use — consulte disponibilidade e horários pelo WhatsApp.</div>
+    </div>
+  </div>
+</section>
+
+<section class="loc" id="loc">
+  <div class="wrap loc-grid">
+    <div class="reveal">
+      <h2 class="h2">Onde fica.</h2>
+      <address>Arena Sicredi<br>Tv. Mal. Rondon, 2224<br>Barra do Garças — MT, 78601-302</address>
+    </div>
+    <a href="https://www.google.com/maps/place/Arena+Sicredi/@-15.8887707,-52.2493287,17z/data=!3m1!4b1!4m6!3m5!1s0x93656f08fdd1f2bb:0x530fd51973338fbe!8m2!3d-15.8887707!4d-52.2493287!16s%2Fg%2F11tc75gc71" target="_blank" rel="noopener" class="btn outline-dark reveal">Como chegar
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="13 5 20 12 13 19"/></svg></a>
+  </div>
+</section>
+
+<section class="final" id="reserva">
+  <div class="wrap">
+    <h2 class="h2 reveal">Bora jogar?</h2>
+    <p class="reveal">Reserve sua quadra e garanta seu horário na Arena Sicredi.</p>
+    <div class="hero-ctas reveal" style="margin-top:30px">
+      <a href="#" class="btn pri" id="waCta">Reserve sua quadra
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="13 5 20 12 13 19"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <div class="f-col">
+        <span class="logo" style="font-size:18px;color:var(--off)">ARENA SICREDI</span>
+      </div>
+      <div class="f-col">
+        <span class="h">LOCAL</span>
+        <span>Tv. Mal. Rondon, 2224<br>Barra do Garças — MT</span>
+      </div>
+      <div class="f-col">
+        <span class="h">CONTATO</span>
+        <a href="#" id="waFoot">WhatsApp</a>
+        <a href="https://www.instagram.com/arenasicredi/" target="_blank" rel="noopener">@arenasicredi</a>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <span>© 2026 Arena Sicredi. Todos os direitos reservados.</span>
+      <span>Barra do Garças — MT</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var hdr = document.getElementById('siteHeader');
+  function paintHeader(){
+    var y = window.scrollY || 0;
+    var heroH = document.querySelector('.hero').offsetHeight;
+    if(y > heroH - 90){ hdr.classList.add('on-light'); } else { hdr.classList.remove('on-light'); }
+  }
+  window.addEventListener('scroll', paintHeader, {passive:true});
+  paintHeader();
+
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if(!reduced && window.gsap && window.ScrollTrigger){
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.to('h1.h-hero .ln span', {
+      y:0, duration:0.9, stagger:0.09, ease:'power3.out', delay:0.15
+    });
+    gsap.fromTo('.hero-sub, .hero-ctas', {opacity:0, y:14}, {
+      opacity:1, y:0, duration:0.8, stagger:0.12, ease:'power2.out', delay:0.55
+    });
+
+    document.querySelectorAll('.reveal').forEach(function(el){
+      gsap.to(el, {
+        opacity:1, y:0, duration:0.9, ease:'power2.out',
+        scrollTrigger:{trigger:el, start:'top 88%'}
+      });
+    });
+
+    gsap.utils.toArray('.sfig .photo img, .hero .photo img').forEach(function(img){
+      gsap.fromTo(img, {scale:1.08}, {
+        scale:1, duration:1.4, ease:'power2.out',
+        scrollTrigger:{trigger:img, start:'top 90%'}
+      });
+    });
+  } else {
+    document.querySelectorAll('.reveal, .hero-sub, .hero-ctas').forEach(function(el){
+      el.style.opacity = 1; el.style.transform = 'none';
+    });
+    document.querySelectorAll('h1.h-hero .ln span').forEach(function(el){
+      el.style.transform = 'none';
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
